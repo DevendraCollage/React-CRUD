@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const FormUpdate = () => {
-  const [faculty, setFaculties] = useState([]);
+  const [faculty, setFaculties] = useState([]); //? This is also i temporary commenting
   const params = useParams();
   const navigate = useNavigate();
 
-  const apiURL = "https://65e3074788c4088649f53321.mockapi.io/Faculty";
+  const apiURL = "https://65e3074788c4088649f53321.mockapi.io/Faculty"; //? This is i am temporary commenting the MockAPI URl
 
   useEffect(() => {
     fetch(`${apiURL}/${params.id}`)
@@ -44,21 +44,23 @@ const FormUpdate = () => {
   //TODO: Logic to insert a new faculty into the API
   const onSubmit = (e) => {
     e.preventDefault();
-    fetch(`${apiURL}`, {
-      method: "POST",
-      body: JSON.stringify(faculty),
+    fetch(`${apiURL}/${params.id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        FacultyName: faculty.FacultyName,
+        FacultyAbout: faculty.FacultyAbout,
+        FacultyImage: faculty.FacultyImage,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    }).then((res) => {
+      if (res.ok) {
         navigate("/api");
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        window.location.reload();
-      });
+      } else {
+        alert("Failed to edit!");
+      }
+    });
   };
 
   return (

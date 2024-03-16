@@ -7,7 +7,6 @@ const FetchAPIByID = () => {
   const [faculty, setFaculties] = useState([]);
   const params = useParams();
   const navigate = useNavigate();
-  // const [editIndex, setEditIndex] = useState(-1); //? This state variable is use for change the state of the list item when updated the list items
   const apiURL = "https://65e3074788c4088649f53321.mockapi.io/Faculty";
 
   useEffect(() => {

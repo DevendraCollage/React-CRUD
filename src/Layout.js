@@ -38,19 +38,35 @@ const Layout = () => {
                   Blog
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/counter">
+                  Counter
+                </Link>
+              </li>
               <li>
                 <Link className="nav-link" aria-current="page" to="/faculty">
-                  Faculties
+                  Faculties-Static
                 </Link>
               </li>
               <li>
                 <Link className="nav-link" aria-current="page" to="/api">
-                  API
+                  API-Mock
                 </Link>
               </li>
               <li>
                 <Link className="nav-link" aria-current="page" to="/AddFac">
                   Add-Faculty
+                </Link>
+              </li>
+              {/* This is get all faculty using MERN API */}
+              <li>
+                <Link className="nav-link" aria-current="page" to="/apimern">
+                  API-MERN
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link" aria-current="page" to="/AddFit">
+                  Add-Fitness-Challenges
                 </Link>
               </li>
             </ul>
